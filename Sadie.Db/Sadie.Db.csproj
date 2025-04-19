@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Version>1.0.0</Version>
+        <IsPackable>true</IsPackable>
+        <PackageId>Sadie.Db</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RootNamespace>Sadie.Db</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EFCore.NamingConventions" Version="9.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.3.efcore.9.0.0" />
+      <PackageReference Include="Sadie.Enums" Version="1.2.7" />
+      <PackageReference Include="Sadie.Shared" Version="1.1.0" />
+    </ItemGroup>
+
+</Project>
