@@ -38,21 +38,42 @@ public static class DatabaseServiceCollection
                 .OrderByDescending(x => x.CreatedAt)
                 .First()
             );
-
+        
         serviceCollection.AddSingleton(provider =>
-            provider.GetRequiredService<SadieContext>()
-                .Set<CatalogPage>()
-                .Include("Pages")
-                .Include("Pages.Pages")
-                .Include("Pages.Pages.Pages")
-                .Include("Pages.Pages.Pages.Pages")
-                .Include(c => c.Items).ThenInclude(x => x.FurnitureItems)
-                .ToList());
+        {
+            var context = provider.GetRequiredService<SadieContext>();
+            var pages = context.Set<CatalogPage>()
+                .Include(c => c.Items)
+                .ThenInclude(x => x.FurnitureItems)
+                .ToList();
+
+            foreach (var page in pages)
+            {
+                LoadPagesRecursively(context, page.Pages);
+            }
+
+            return pages;
+        });
 
         serviceCollection.AddSingleton(provider =>
             provider.GetRequiredService<SadieContext>()
                 .Set<CatalogFrontPageItem>()
                 .Include(x => x.CatalogPage)
                 .ToList());
+    }
+    
+    private static void LoadPagesRecursively(SadieContext context, ICollection<CatalogPage> pages)
+    {
+        if (pages.Count == 0)
+        {
+            return;
+        }
+
+        context.Entry(pages).Collection(p => p).Load();
+
+        foreach (var page in pages.Where(page => page.Pages.Count > 0))
+        {
+            LoadPagesRecursively(context, page.Pages);
+        }
     }
 }
