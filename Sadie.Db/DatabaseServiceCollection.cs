@@ -21,6 +21,8 @@ public static class DatabaseServiceCollection
                     maxRetryCount: 10,
                     maxRetryDelay: TimeSpan.FromSeconds(30),
                     errorNumbersToAdd: null);
+                
+                mySqlOptions.MigrationsAssembly("Sadie.Migrations");
             });
         
             options.UseSnakeCaseNamingConvention();
