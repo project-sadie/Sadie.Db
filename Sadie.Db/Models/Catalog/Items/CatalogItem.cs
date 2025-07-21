@@ -13,5 +13,6 @@ public class CatalogItem
     public bool RequiresClubMembership { get; init; }
     public string? MetaData { get; init; }
     public int Amount { get; init; }
+    public int StackLimit { get; init; }
     public int SellLimit { get; init; }
 }
