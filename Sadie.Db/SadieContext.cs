@@ -106,6 +106,7 @@ public class SadieContext(DbContextOptions<SadieContext> options) : DbContext(op
         modelBuilder.Entity<RoomDimmerPreset>().ToTable("room_dimmer_presets");
         modelBuilder.Entity<PlayerFurnitureItemPlacementData>().ToTable("player_furniture_item_placement_data");
         modelBuilder.Entity<PlayerIgnore>().ToTable("player_ignores");
+        modelBuilder.Entity<PlayerRelationshipType>().ToTable("player_relationship_types");
 
         modelBuilder.Entity<RoomLayout>()
             .Property(x => x.HeightMap)
