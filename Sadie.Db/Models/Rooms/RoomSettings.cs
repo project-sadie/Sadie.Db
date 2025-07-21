@@ -1,4 +1,4 @@
-﻿sshusing System.ComponentModel;
+﻿using System.ComponentModel;
 using Sadie.Enums.Game.Rooms;
 
 namespace Sadie.Db.Models.Rooms;
