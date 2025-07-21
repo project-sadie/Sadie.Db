@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Sadie.Db.Models.Catalog.Items;
 using Sadie.Enums.Game.Furniture;
 
@@ -22,7 +23,7 @@ public class FurnitureItem
     public bool CanMarketplaceSell { get; init; }
     public bool CanInventoryStack { get; init; }
     public bool CanGift { get; init; }
-    public required string InteractionType { get; init; }
+    [DefaultValue(null)] public required string? InteractionType { get; init; }
     public int InteractionModes { get; init; }
     public ICollection<CatalogItem> CatalogItems { get; init; } = [];
     public ICollection<HandItem> HandItems { get; init; } = [];

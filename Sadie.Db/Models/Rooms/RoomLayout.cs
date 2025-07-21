@@ -1,4 +1,5 @@
-﻿using Sadie.Enums.Unsorted;
+﻿using System.ComponentModel;
+using Sadie.Enums.Unsorted;
 
 namespace Sadie.Db.Models.Rooms;
 
@@ -10,4 +11,6 @@ public class RoomLayout
     public int DoorX { get; set; }
     public int DoorY { get; set; }
     public HDirection DoorDirection { get; set; }
+    [DefaultValue(false)] public bool RequiresClubMembership { get; set; }
+    public string? ExtraData { get; set; }
 }

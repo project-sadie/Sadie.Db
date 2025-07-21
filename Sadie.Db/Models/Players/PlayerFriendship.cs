@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Sadie.Enums.Game.Players;
 
 namespace Sadie.Db.Models.Players;
@@ -9,6 +10,6 @@ public class PlayerFriendship
     public Player? OriginPlayer { get; init; }
     public long TargetPlayerId { get; init; }
     public Player? TargetPlayer { get; init; }
-    public PlayerFriendshipStatus Status { get; set; }
+    [DefaultValue(1)] public PlayerFriendshipStatus Status { get; set; }
     public DateTime CreatedAt { get; set; }
 }

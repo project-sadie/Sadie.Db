@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Sadie.Enums.Unsorted;
 
 namespace Sadie.Db.Models.Players;
@@ -11,6 +12,6 @@ public class PlayerBot
     public required string FigureCode { get; init; }
     public required string Motto { get; init; }
     public required AvatarGender Gender { get; init; }
-    public ChatBubble ChatBubbleId { get; init; }
+    [DefaultValue(0)] public ChatBubble ChatBubbleId { get; init; }
     public required DateTime CreatedAt { get; init; }
 }

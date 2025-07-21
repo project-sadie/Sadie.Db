@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Sadie.Db.Models.Players;
 
 public class PlayerData
@@ -14,6 +16,6 @@ public class PlayerData
     public int RespectPointsPet { get; init; }
     public int AchievementScore { get; init; }
     public bool AllowFriendRequests { get; init; }
-    public bool IsOnline { get; set; }
+    [DefaultValue(false)] public bool IsOnline { get; set; }
     public DateTime? LastOnline { get; set; }
 }

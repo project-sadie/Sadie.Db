@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Sadie.Enums.Unsorted;
 
 namespace Sadie.Db.Models.Players;
@@ -10,5 +11,5 @@ public class PlayerAvatarData
     public required string FigureCode { get; set; }
     public string? Motto { get; set; }
     public AvatarGender Gender { get; set; }
-    public ChatBubble ChatBubbleId { get; set; }
+    [DefaultValue(0)] public ChatBubble ChatBubbleId { get; set; }
 }
