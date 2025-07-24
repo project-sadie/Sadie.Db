@@ -14,8 +14,8 @@ public class PlayerData
     public int GotwPoints { get; set; }
     public int RespectPoints { get; set; }
     public int RespectPointsPet { get; init; }
-    public int AchievementScore { get; init; }
-    public bool AllowFriendRequests { get; init; }
+    [DefaultValue(0)] public int AchievementScore { get; init; }
+    [DefaultValue(true)] public bool AllowFriendRequests { get; init; }
     [DefaultValue(false)] public bool IsOnline { get; set; }
     public DateTime? LastOnline { get; set; }
 }
