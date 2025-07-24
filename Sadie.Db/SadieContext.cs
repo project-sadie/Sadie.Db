@@ -220,20 +220,5 @@ public class SadieContext(DbContextOptions<SadieContext> options) : DbContext(op
         modelBuilder.Entity<Role>()
             .Navigation(x => x.Permissions)
             .AutoInclude();
-        
-        SeedData.SeedPermissions(modelBuilder);
-        SeedData.SeedRoles(modelBuilder);
-        SeedData.SeedRoomLayouts(modelBuilder);
-        SeedData.SeedHandItems(modelBuilder);
-        SeedData.SeedCatalogClubOffers(modelBuilder);
-        SeedData.SeedSubscriptions(modelBuilder);
-        SeedData.SeedServerSettings(modelBuilder);
-        SeedData.SeedServerPlayerConstants(modelBuilder);
-        SeedData.SeedServerRoomConstants(modelBuilder);
-        SeedData.SeedNavigatorTabs(modelBuilder);
-        SeedData.SeedNavigatorCategories(modelBuilder);
-        SeedData.SeedPlayerRelationshipTypes(modelBuilder);
-        SeedData.SeedRolePermissions(modelBuilder);
-        SeedData.SeedCatalogFrontPageItems(modelBuilder);
     }
 }
