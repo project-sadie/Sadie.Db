@@ -33,7 +33,7 @@ public class Room : IRoom
     public ICollection<RoomChatMessage> ChatMessages { get; init; } = [];
     public ICollection<RoomTag> Tags { get; init; } = [];
     public ICollection<PlayerRoomLike> PlayerLikes { get; init; } = [];
-    public ICollection<PlayerFurnitureItemPlacementData> FurnitureItems{ get; init; }
+    public ICollection<PlayerFurnitureItemPlacementData> FurnitureItems { get; init; } = [];
     public DateTime CreatedAt { get; init; }
     public Group? Group { get; init; }
     public RoomDimmerSettings? DimmerSettings { get; set; }
