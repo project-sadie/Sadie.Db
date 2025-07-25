@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using Sadie.Enums.Unsorted;
 
 namespace Sadie.Db.Models.Rooms;
 

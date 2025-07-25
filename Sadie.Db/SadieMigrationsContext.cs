@@ -32,7 +32,7 @@ public class SadieMigrationsContextFactory : IDesignTimeDbContextFactory<SadieMi
             .UseMySql(
                 connectionString,
                 ServerVersion.AutoDetect(connectionString),
-                b => b.MigrationsAssembly("Sadie.Migrations"))
+                b => b.MigrationsAssembly("Sadie.Db"))
             .UseSnakeCaseNamingConvention()
             .Options);
     }

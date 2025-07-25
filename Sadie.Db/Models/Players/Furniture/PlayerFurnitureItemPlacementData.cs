@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Sadie.Db.Models.Furniture;
 using Sadie.Db.Models.Rooms;
-using Sadie.Enums.Unsorted;
+using Sadie.Enums.Miscellaneous;
 
 namespace Sadie.Db.Models.Players.Furniture;
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Sadie.Migrations.Migrations
+namespace Sadie.Db.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
