@@ -6,11 +6,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sadie.Db;
-using Sadie.Migrations;
 
 #nullable disable
 
-namespace Sadie.Migrations.Migrations
+namespace Sadie.Db.Migrations
 {
     [DbContext(typeof(SadieMigrationsContext))]
     [Migration("20250721185613_InitialCreate")]

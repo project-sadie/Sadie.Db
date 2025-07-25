@@ -14,8 +14,9 @@ using Sadie.Db.Models.Rooms.Chat;
 using Sadie.Db.Models.Rooms.Rights;
 using Sadie.Db.Models.Server;
 using Sadie.Enums.Game.Furniture;
-using Sadie.Enums.Unsorted;
+using Sadie.Enums.Game.Players;
 using Sadie.Shared.Helpers;
+using PlayerRelationshipType = Sadie.Db.Models.Players.PlayerRelationshipType;
 
 namespace Sadie.Db;
 
@@ -112,13 +113,13 @@ public class SadieContext(DbContextOptions<SadieContext> options) : DbContext(op
             .Property(e => e.Gender)
             .HasConversion(
                 v => EnumHelpers.GetEnumDescription(v),
-                v => EnumHelpers.GetEnumValueFromDescription<AvatarGender>(v.ToUpper()));
+                v => EnumHelpers.GetEnumValueFromDescription<PlayerAvatarGender>(v.ToUpper()));
         
         modelBuilder.Entity<PlayerBot>()
             .Property(e => e.Gender)
             .HasConversion(
                 v => EnumHelpers.GetEnumDescription(v),
-                v => EnumHelpers.GetEnumValueFromDescription<AvatarGender>(v.ToUpper()));
+                v => EnumHelpers.GetEnumValueFromDescription<PlayerAvatarGender>(v.ToUpper()));
 
         modelBuilder.Entity<Subscription>().ToTable("subscriptions");
 

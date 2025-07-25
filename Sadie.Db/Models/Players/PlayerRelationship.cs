@@ -1,5 +1,3 @@
-using Sadie.Enums.Game.Players;
-
 namespace Sadie.Db.Models.Players;
 
 public class PlayerRelationship
