@@ -5,6 +5,7 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 5
+    target-branch: "develop"
     allow:
       - dependency-name: "Sadie.Enums"
       - dependency-name: "Sadie.Shared"
