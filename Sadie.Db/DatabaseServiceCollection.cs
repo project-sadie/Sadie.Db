@@ -27,6 +27,8 @@ public static class DatabaseServiceCollection
         
             options.UseSnakeCaseNamingConvention();
         }, ServiceLifetime.Transient);
+        
+        serviceCollection.AddDbContextFactory<SadieMigrationsContext>();
 
         serviceCollection.AddSingleton<ServerPlayerConstants>(provider =>
             provider.GetRequiredService<SadieContext>()

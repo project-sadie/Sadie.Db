@@ -408,6 +408,7 @@ namespace Sadie.Db.Migrations
                     meta_data = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     amount = table.Column<int>(type: "int", nullable: false),
+                    stack_limit = table.Column<int>(type: "int", nullable: false),
                     sell_limit = table.Column<int>(type: "int", nullable: false),
                     catalog_page_id = table.Column<int>(type: "int", nullable: true)
                 },
@@ -819,17 +820,11 @@ namespace Sadie.Db.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     origin_player_id = table.Column<long>(type: "bigint", nullable: false),
                     target_player_id = table.Column<long>(type: "bigint", nullable: false),
-                    type_id_id = table.Column<int>(type: "int", nullable: false)
+                    type_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_player_relationships", x => x.id);
-                    table.ForeignKey(
-                        name: "fk_player_relationships_player_relationship_type_type_id_id",
-                        column: x => x.type_id_id,
-                        principalTable: "player_relationship_types",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_player_relationships_players_origin_player_id",
                         column: x => x.origin_player_id,
@@ -1695,11 +1690,6 @@ namespace Sadie.Db.Migrations
                 column: "target_player_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_player_relationships_type_id_id",
-                table: "player_relationships",
-                column: "type_id_id");
-
-            migrationBuilder.CreateIndex(
                 name: "ix_player_respects_origin_player_id",
                 table: "player_respects",
                 column: "origin_player_id");
@@ -1890,6 +1880,9 @@ namespace Sadie.Db.Migrations
                 name: "player_navigator_settings");
 
             migrationBuilder.DropTable(
+                name: "player_relationship_types");
+
+            migrationBuilder.DropTable(
                 name: "player_relationships");
 
             migrationBuilder.DropTable(
@@ -1984,9 +1977,6 @@ namespace Sadie.Db.Migrations
 
             migrationBuilder.DropTable(
                 name: "player_furniture_item_wired_data");
-
-            migrationBuilder.DropTable(
-                name: "player_relationship_types");
 
             migrationBuilder.DropTable(
                 name: "subscriptions");
