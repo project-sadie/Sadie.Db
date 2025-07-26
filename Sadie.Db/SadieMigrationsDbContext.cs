@@ -4,16 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace Sadie.Db;
 
-public class SadieMigrationsContext : SadieContext
-{
-    public SadieMigrationsContext(DbContextOptions<SadieContext> options) : base(options)
-    {
-    }
-}
+public class SadieMigrationsDbContext(DbContextOptions<SadieDbContext> options) : SadieDbContext(options);
 
-public class SadieMigrationsContextFactory : IDesignTimeDbContextFactory<SadieMigrationsContext>
+public class SadieMigrationsContextFactory : IDesignTimeDbContextFactory<SadieMigrationsDbContext>
 {
-    public SadieMigrationsContext CreateDbContext(string[] args)
+    public SadieMigrationsDbContext CreateDbContext(string[] args)
     {
         var config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -22,12 +17,13 @@ public class SadieMigrationsContextFactory : IDesignTimeDbContextFactory<SadieMi
             .Build();
 
         var connectionString = config.GetConnectionString("Default");
+        
         if (string.IsNullOrWhiteSpace(connectionString))
         {
             throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         }
 
-        return new SadieMigrationsContext(new DbContextOptionsBuilder<SadieContext>()
+        return new SadieMigrationsDbContext(new DbContextOptionsBuilder<SadieDbContext>()
             .UseMySql(
                 connectionString,
                 ServerVersion.AutoDetect(connectionString),

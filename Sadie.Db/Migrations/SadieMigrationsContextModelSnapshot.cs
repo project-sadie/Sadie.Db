@@ -10,7 +10,7 @@ using Sadie.Db;
 
 namespace Sadie.Db.Migrations
 {
-    [DbContext(typeof(SadieMigrationsContext))]
+    [DbContext(typeof(SadieMigrationsDbContext))]
     partial class SadieMigrationsContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

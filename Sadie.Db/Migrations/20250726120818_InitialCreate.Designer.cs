@@ -11,7 +11,7 @@ using Sadie.Db;
 
 namespace Sadie.Db.Migrations
 {
-    [DbContext(typeof(SadieMigrationsContext))]
+    [DbContext(typeof(SadieMigrationsDbContext))]
     [Migration("20250726120818_InitialCreate")]
     partial class InitialCreate
     {

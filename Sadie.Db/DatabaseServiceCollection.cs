@@ -11,9 +11,9 @@ public static class DatabaseServiceCollection
 {
     public static void AddServices(IServiceCollection serviceCollection, IConfiguration config)
     {
-        serviceCollection.AddDbContextFactory<SadieContext>(); 
+        serviceCollection.AddDbContextFactory<SadieDbContext>(); 
         
-        serviceCollection.AddDbContext<SadieContext>(options =>
+        serviceCollection.AddDbContext<SadieDbContext>(options =>
         {
             options.UseMySql(config.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion, mySqlOptions =>
             {
@@ -28,16 +28,16 @@ public static class DatabaseServiceCollection
             options.UseSnakeCaseNamingConvention();
         }, ServiceLifetime.Transient);
         
-        serviceCollection.AddDbContextFactory<SadieMigrationsContext>();
+        serviceCollection.AddDbContextFactory<SadieMigrationsDbContext>();
 
         serviceCollection.AddSingleton<ServerPlayerConstants>(provider =>
-            provider.GetRequiredService<SadieContext>()
+            provider.GetRequiredService<SadieDbContext>()
                 .ServerPlayerConstants
                 .First()
             );
 
         serviceCollection.AddSingleton<ServerRoomConstants>(provider =>
-            provider.GetRequiredService<SadieContext>()
+            provider.GetRequiredService<SadieDbContext>()
                 .ServerRoomConstants
                 .OrderByDescending(x => x.CreatedAt)
                 .First()
@@ -45,7 +45,7 @@ public static class DatabaseServiceCollection
         
         serviceCollection.AddSingleton(provider =>
         {
-            var context = provider.GetRequiredService<SadieContext>();
+            var context = provider.GetRequiredService<SadieDbContext>();
             var pages = context.Set<CatalogPage>()
                 .Include(c => c.Items)
                 .ThenInclude(x => x.FurnitureItems)
@@ -60,24 +60,24 @@ public static class DatabaseServiceCollection
         });
 
         serviceCollection.AddSingleton(provider =>
-            provider.GetRequiredService<SadieContext>()
+            provider.GetRequiredService<SadieDbContext>()
                 .Set<CatalogFrontPageItem>()
                 .Include(x => x.CatalogPage)
                 .ToList());
     }
     
-    private static void LoadPagesRecursively(SadieContext context, ICollection<CatalogPage> pages)
+    private static void LoadPagesRecursively(SadieDbContext dbContext, ICollection<CatalogPage> pages)
     {
         if (pages.Count == 0)
         {
             return;
         }
 
-        context.Entry(pages).Collection(p => p).Load();
+        dbContext.Entry(pages).Collection(p => p).Load();
 
         foreach (var page in pages.Where(page => page.Pages.Count > 0))
         {
-            LoadPagesRecursively(context, page.Pages);
+            LoadPagesRecursively(dbContext, page.Pages);
         }
     }
 }
