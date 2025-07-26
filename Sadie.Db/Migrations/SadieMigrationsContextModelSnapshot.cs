@@ -8,7 +8,7 @@ using Sadie.Db;
 
 #nullable disable
 
-namespace Sadie.Migrations.Migrations
+namespace Sadie.Db.Migrations
 {
     [DbContext(typeof(SadieMigrationsContext))]
     partial class SadieMigrationsContextModelSnapshot : ModelSnapshot
@@ -240,6 +240,10 @@ namespace Sadie.Migrations.Migrations
                     b.Property<int>("SellLimit")
                         .HasColumnType("int")
                         .HasColumnName("sell_limit");
+
+                    b.Property<int>("StackLimit")
+                        .HasColumnType("int")
+                        .HasColumnName("stack_limit");
 
                     b.HasKey("Id")
                         .HasName("pk_catalog_items");
@@ -1228,9 +1232,9 @@ namespace Sadie.Migrations.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("target_player_id");
 
-                    b.Property<int>("TypeIdId")
+                    b.Property<int>("TypeId")
                         .HasColumnType("int")
-                        .HasColumnName("type_id_id");
+                        .HasColumnName("type_id");
 
                     b.HasKey("Id")
                         .HasName("pk_player_relationships");
@@ -1240,9 +1244,6 @@ namespace Sadie.Migrations.Migrations
 
                     b.HasIndex("TargetPlayerId")
                         .HasDatabaseName("ix_player_relationships_target_player_id");
-
-                    b.HasIndex("TypeIdId")
-                        .HasDatabaseName("ix_player_relationships_type_id_id");
 
                     b.ToTable("player_relationships", (string)null);
                 });
@@ -1858,7 +1859,7 @@ namespace Sadie.Migrations.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("extra_data");
 
-                    b.Property<string>("HeightMap")
+                    b.Property<string>("Heightmap")
                         .HasColumnType("longtext")
                         .HasColumnName("heightmap");
 
@@ -2530,18 +2531,9 @@ namespace Sadie.Migrations.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_player_relationships_players_target_player_id");
 
-                    b.HasOne("Sadie.Db.Models.Players.PlayerRelationshipType", "TypeId")
-                        .WithMany()
-                        .HasForeignKey("TypeIdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_player_relationships_player_relationship_type_type_id_id");
-
                     b.Navigation("OriginPlayer");
 
                     b.Navigation("TargetPlayer");
-
-                    b.Navigation("TypeId");
                 });
 
             modelBuilder.Entity("Sadie.Db.Models.Players.PlayerRespect", b =>
