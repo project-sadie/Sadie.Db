@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sadie.Db;
 
@@ -11,9 +12,11 @@ using Sadie.Db;
 namespace Sadie.Db.Migrations
 {
     [DbContext(typeof(SadieMigrationsDbContext))]
-    partial class SadieMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250726192102_OauthClients")]
+    partial class OauthClients
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
