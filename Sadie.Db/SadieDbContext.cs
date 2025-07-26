@@ -20,7 +20,7 @@ using PlayerRelationshipType = Sadie.Db.Models.Players.PlayerRelationshipType;
 
 namespace Sadie.Db;
 
-public class SadieContext(DbContextOptions<SadieContext> options) : DbContext(options)
+public class SadieDbContext(DbContextOptions<SadieDbContext> options) : DbContext(options)
 {
     public DbSet<NavigatorCategory> NavigatorCategories { get; init; }
     public DbSet<NavigatorTab> NavigatorTabs { get; init; }
