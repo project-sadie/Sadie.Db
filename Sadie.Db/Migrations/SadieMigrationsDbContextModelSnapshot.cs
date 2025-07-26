@@ -578,6 +578,31 @@ namespace Sadie.Db.Migrations
                     b.ToTable("navigator_tabs", (string)null);
                 });
 
+            modelBuilder.Entity("Sadie.Db.Models.OauthClient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Domain")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("domain");
+
+                    b.Property<string>("Secret")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("secret");
+
+                    b.HasKey("Id")
+                        .HasName("pk_oauth_clients");
+
+                    b.ToTable("oauth_clients", (string)null);
+                });
+
             modelBuilder.Entity("Sadie.Db.Models.Permission", b =>
                 {
                     b.Property<int>("Id")
