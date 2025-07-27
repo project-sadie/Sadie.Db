@@ -18,7 +18,7 @@ public class Player
     [MaxLength(50)] public required string Email { get; init; }
     [MaxLength(60)] public required string Password { get; init; }
     public ICollection<Role> Roles { get; init; } = [];
-    public DateTime CreatedAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
     public PlayerData? Data { get; init; }
     public PlayerAvatarData? AvatarData { get; init; }
     public List<PlayerTag> Tags { get; init; } = [];

@@ -9,5 +9,5 @@ public class ServerPeriodicCurrencyRewardLog
     public Player Player { get; init; }
     public string? Type { get; init; }
     public int Amount { get; init; }
-    public DateTime CreatedAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
 }

@@ -8,5 +8,5 @@ public class PlayerMessage
     public long TargetPlayerId { get; init; }
     public Player? TargetPlayer { get; init; }
     public string? Message { get; init; }
-    public DateTime CreatedAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
 }

@@ -15,5 +15,5 @@ public class RoomChatMessage
     public ChatBubble ChatBubbleId { get; init; }
     public RoomUserEmotion EmotionId { get; init; }
     public RoomChatMessageType TypeId { get; init; }
-    public DateTime CreatedAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
 }

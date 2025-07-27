@@ -8,5 +8,5 @@ public class PlayerRoomBan
     public long PlayerId { get; init; }
     public Player? Player { get; init; }
     public int RoomId { get; init; }
-    public DateTime ExpiresAt { get; init; }
+    public DateTimeOffset ExpiresAt { get; init; }
 }

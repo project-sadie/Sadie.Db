@@ -8,5 +8,5 @@ public class ServerRoomConstants
     public int MaxDescriptionLength { get; init; }
     public int MaxTagLength { get; init; }
     public int WiredMaxFurnitureSelection { get; init; }
-    public DateTime CreatedAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
 }

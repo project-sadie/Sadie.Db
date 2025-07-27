@@ -5,7 +5,7 @@ using Sadie.Db.Models.Rooms.Rights;
 
 namespace Sadie.Db.Models.Rooms;
 
-public class Room : IRoom
+public class Room
 {
     private Player? _owner;
     private RoomPaintSettings? _paintSettings;
@@ -34,7 +34,7 @@ public class Room : IRoom
     public ICollection<RoomTag> Tags { get; init; } = [];
     public ICollection<PlayerRoomLike> PlayerLikes { get; init; } = [];
     public ICollection<PlayerFurnitureItemPlacementData> FurnitureItems { get; init; } = [];
-    public DateTime CreatedAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
     public Group? Group { get; init; }
     public RoomDimmerSettings? DimmerSettings { get; set; }
     public ICollection<PlayerRoomBan> PlayerBans { get; init; } = [];
