@@ -12,7 +12,7 @@ using Sadie.Db;
 namespace Sadie.Db.Migrations
 {
     [DbContext(typeof(SadieMigrationsDbContext))]
-    [Migration("20250727155251_InitialCreate")]
+    [Migration("20250727160006_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

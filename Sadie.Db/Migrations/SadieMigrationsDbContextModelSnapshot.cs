@@ -795,12 +795,20 @@ namespace Sadie.Db.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("email");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("varchar(60)")
+                        .HasColumnName("password");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("username");
 
                     b.HasKey("Id")
@@ -824,7 +832,8 @@ namespace Sadie.Db.Migrations
 
                     b.Property<string>("FigureCode")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
                         .HasColumnName("figure_code");
 
                     b.Property<string>("Gender")
@@ -833,7 +842,8 @@ namespace Sadie.Db.Migrations
                         .HasColumnName("gender");
 
                     b.Property<string>("Motto")
-                        .HasColumnType("longtext")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("motto");
 
                     b.Property<long>("PlayerId")
