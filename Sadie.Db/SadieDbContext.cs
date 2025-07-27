@@ -15,6 +15,8 @@ using Sadie.Db.Models.Rooms.Rights;
 using Sadie.Db.Models.Server;
 using Sadie.Enums.Game.Furniture;
 using Sadie.Enums.Game.Players;
+using Sadie.Enums.Game.Rooms;
+using Sadie.Enums.Miscellaneous;
 using Sadie.Shared.Helpers;
 using PlayerRelationshipType = Sadie.Db.Models.Players.PlayerRelationshipType;
 
@@ -223,5 +225,152 @@ public class SadieDbContext(DbContextOptions<SadieDbContext> options) : DbContex
         modelBuilder.Entity<Role>()
             .Navigation(x => x.Permissions)
             .AutoInclude();
+        
+        modelBuilder.Entity<PlayerData>(entity =>
+        {
+            entity.Property(p => p.RespectPoints)
+                .HasDefaultValue(15);
+
+            entity.Property(p => p.RespectPointsPet)
+                .HasDefaultValue(15);
+
+            entity.Property(p => p.AchievementScore)
+                .HasDefaultValue(15);
+
+            entity.Property(p => p.AllowFriendRequests)
+                .HasDefaultValue(true);
+
+            entity.Property(p => p.IsOnline)
+                .HasDefaultValue(false);
+        });
+        
+        modelBuilder.Entity<RoomSettings>(entity =>
+        {
+            entity.Property(p => p.WalkDiagonal)
+                .HasDefaultValue(true);
+
+            entity.Property(p => p.AccessType)
+                .HasDefaultValue(RoomAccessType.Open);
+
+            entity.Property(p => p.WhoCanMute)
+                .HasDefaultValue(0);
+
+            entity.Property(p => p.WhoCanKick)
+                .HasDefaultValue(0);
+
+            entity.Property(p => p.WhoCanBan)
+                .HasDefaultValue(0);
+
+            entity.Property(p => p.AllowPets)
+                .HasDefaultValue(true);
+
+            entity.Property(p => p.CanPetsEat)
+                .HasDefaultValue(true);
+
+            entity.Property(p => p.HideWalls)
+                .HasDefaultValue(false);
+
+            entity.Property(p => p.WallThickness)
+                .HasDefaultValue(0);
+
+            entity.Property(p => p.FloorThickness)
+                .HasDefaultValue(0);
+
+            entity.Property(p => p.CanUsersOverlap)
+                .HasDefaultValue(false);
+        });
+        
+        modelBuilder.Entity<PlayerNavigatorSettings>(entity =>
+        {
+            entity.Property(e => e.WindowX)
+                .HasDefaultValue(50);
+
+            entity.Property(e => e.WindowY)
+                .HasDefaultValue(50);
+
+            entity.Property(e => e.WindowWidth)
+                .HasDefaultValue(435);
+
+            entity.Property(e => e.WindowHeight)
+                .HasDefaultValue(535);
+
+            entity.Property(e => e.OpenSearches)
+                .HasDefaultValue(false);
+        });
+        
+        modelBuilder.Entity<PlayerGameSettings>(entity =>
+        {
+            entity.Property(e => e.SystemVolume)
+                .HasDefaultValue(100);
+
+            entity.Property(e => e.FurnitureVolume)
+                .HasDefaultValue(100);
+
+            entity.Property(e => e.TraxVolume)
+                .HasDefaultValue(100);
+
+            entity.Property(e => e.PreferOldChat)
+                .HasDefaultValue(false);
+
+            entity.Property(e => e.BlockRoomInvites)
+                .HasDefaultValue(false);
+
+            entity.Property(e => e.BlockCameraFollow)
+                .HasDefaultValue(false);
+
+            entity.Property(e => e.UiFlags)
+                .HasDefaultValue(1);
+
+            entity.Property(e => e.ShowNotifications)
+                .HasDefaultValue(true);
+        });
+        
+        modelBuilder.Entity<RoomChatSettings>(entity =>
+        {
+            entity.Property(p => p.ChatType)
+                .HasDefaultValue(0);
+
+            entity.Property(p => p.ChatWeight)
+                .HasDefaultValue(1);
+
+            entity.Property(p => p.ChatSpeed)
+                .HasDefaultValue(1);
+
+            entity.Property(p => p.ChatDistance)
+                .HasDefaultValue(50);
+
+            entity.Property(p => p.ChatProtection)
+                .HasDefaultValue(1);
+        });
+
+        modelBuilder.Entity<RoomPaintSettings>(entity =>
+        {
+            entity.Property(p => p.FloorPaint)
+                .HasDefaultValue("0.0");
+
+            entity.Property(p => p.WallPaint)
+                .HasDefaultValue("0.0");
+
+            entity.Property(p => p.LandscapePaint)
+                .HasDefaultValue("0.0");
+        });
+        
+        modelBuilder.Entity<PlayerFurnitureItem>(entity =>
+        {
+            entity.Property(p => p.LimitedData)
+                .HasDefaultValue(string.Empty);
+
+            entity.Property(p => p.MetaData)
+                .HasDefaultValue(string.Empty);
+        });
+
+        modelBuilder.Entity<PlayerAvatarData>(entity =>
+        {
+            entity.Property(p => p.Gender)
+                .HasDefaultValue(PlayerAvatarGender.Male);
+
+            entity.Property(p => p.ChatBubbleId)
+                .HasDefaultValue(ChatBubble.Default);
+        });
     }
 }
