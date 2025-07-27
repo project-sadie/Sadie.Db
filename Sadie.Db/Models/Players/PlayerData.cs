@@ -15,5 +15,5 @@ public class PlayerData
     public int AchievementScore { get; init; }
     public bool AllowFriendRequests { get; init; }
     public bool IsOnline { get; set; }
-    public DateTime? LastOnline { get; set; }
+    public DateTimeOffset? LastOnline { get; set; }
 }

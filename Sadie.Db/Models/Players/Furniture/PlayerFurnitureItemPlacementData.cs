@@ -22,7 +22,7 @@ public class PlayerFurnitureItemPlacementData
     public double PositionZ { get; set; }
     public string? WallPosition { get; set; }
     public HDirection Direction { get; set; }
-    public DateTime CreatedAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
     public PlayerFurnitureItemWiredData? WiredData { get; set; }
     
     public ICollection<PlayerFurnitureItemWiredData> SelectedBy { get; init; } = [];

@@ -8,6 +8,6 @@ public class PlayerBan
     public required long PlayerId { get; init; }
     public required Player Player { get; init; }
     public required string Reason { get; init; }
-    public DateTime CreatedAt { get; init; }
-    public DateTime? ExpiresAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
+    public DateTimeOffset? ExpiresAt { get; init; }
 }

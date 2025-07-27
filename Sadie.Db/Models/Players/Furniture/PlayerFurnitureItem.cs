@@ -15,5 +15,5 @@ public class PlayerFurnitureItem
     public required string LimitedData { get; init; }
     public required string MetaData { get; init; }
 
-    public DateTime CreatedAt { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
 }
