@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Sadie.Db.Models.Players.Furniture;
 using Sadie.Db.Models.Rooms;
@@ -13,8 +14,9 @@ public class Player
     }
 
     public long Id { get; init; }
-    public required string Username { get; init; }
-    public required string Email { get; init; }
+    [MaxLength(50)] public required string Username { get; init; }
+    [MaxLength(50)] public required string Email { get; init; }
+    [MaxLength(60)] public required string Password { get; init; }
     public ICollection<Role> Roles { get; init; } = [];
     public DateTime CreatedAt { get; init; }
     public PlayerData? Data { get; init; }

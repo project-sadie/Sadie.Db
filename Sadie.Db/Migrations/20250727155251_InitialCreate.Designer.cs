@@ -12,8 +12,8 @@ using Sadie.Db;
 namespace Sadie.Db.Migrations
 {
     [DbContext(typeof(SadieMigrationsDbContext))]
-    [Migration("20250726192102_OauthClients")]
-    partial class OauthClients
+    [Migration("20250727155251_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -798,12 +798,20 @@ namespace Sadie.Db.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("email");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("varchar(60)")
+                        .HasColumnName("password");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("username");
 
                     b.HasKey("Id")
@@ -827,7 +835,8 @@ namespace Sadie.Db.Migrations
 
                     b.Property<string>("FigureCode")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
                         .HasColumnName("figure_code");
 
                     b.Property<string>("Gender")
@@ -836,7 +845,8 @@ namespace Sadie.Db.Migrations
                         .HasColumnName("gender");
 
                     b.Property<string>("Motto")
-                        .HasColumnType("longtext")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("motto");
 
                     b.Property<long>("PlayerId")
@@ -1581,6 +1591,42 @@ namespace Sadie.Db.Migrations
                         .HasDatabaseName("ix_player_wardrobe_items_player_id");
 
                     b.ToTable("player_wardrobe_items", (string)null);
+                });
+
+            modelBuilder.Entity("Sadie.Db.Models.Players.PlayerWebsiteData", b =>
+                {
+                    b.Property<ulong>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint unsigned")
+                        .HasColumnName("id");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<ulong>("Id"));
+
+                    b.Property<string>("InitialIp")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("initial_ip");
+
+                    b.Property<string>("LastIp")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("last_ip");
+
+                    b.Property<DateTime>("LastLogin")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("last_login");
+
+                    b.Property<long>("PlayerId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("player_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_player_website_data");
+
+                    b.HasIndex("PlayerId")
+                        .HasDatabaseName("ix_player_website_data_player_id");
+
+                    b.ToTable("player_website_data", (string)null);
                 });
 
             modelBuilder.Entity("Sadie.Db.Models.Role", b =>
@@ -2684,6 +2730,18 @@ namespace Sadie.Db.Migrations
                         .WithMany("WardrobeItems")
                         .HasForeignKey("PlayerId")
                         .HasConstraintName("fk_player_wardrobe_items_players_player_id");
+                });
+
+            modelBuilder.Entity("Sadie.Db.Models.Players.PlayerWebsiteData", b =>
+                {
+                    b.HasOne("Sadie.Db.Models.Players.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_player_website_data_players_player_id");
+
+                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("Sadie.Db.Models.Rooms.Chat.RoomChatMessage", b =>
