@@ -150,6 +150,23 @@ namespace Sadie.Db.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "oauth_clients",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    secret = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    domain = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_oauth_clients", x => x.id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "permissions",
                 columns: table => new
                 {
@@ -204,9 +221,11 @@ namespace Sadie.Db.Migrations
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    username = table.Column<string>(type: "longtext", nullable: false)
+                    username = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    email = table.Column<string>(type: "longtext", nullable: false)
+                    email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    password = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     created_at = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
@@ -508,9 +527,9 @@ namespace Sadie.Db.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     player_id = table.Column<long>(type: "bigint", nullable: false),
-                    figure_code = table.Column<string>(type: "longtext", nullable: false)
+                    figure_code = table.Column<string>(type: "varchar(120)", maxLength: 120, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    motto = table.Column<string>(type: "longtext", nullable: true)
+                    motto = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     gender = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -956,6 +975,31 @@ namespace Sadie.Db.Migrations
                         column: x => x.player_id,
                         principalTable: "players",
                         principalColumn: "id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "player_website_data",
+                columns: table => new
+                {
+                    id = table.Column<ulong>(type: "bigint unsigned", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    initial_ip = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    last_ip = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    last_login = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    player_id = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_player_website_data", x => x.id);
+                    table.ForeignKey(
+                        name: "fk_player_website_data_players_player_id",
+                        column: x => x.player_id,
+                        principalTable: "players",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -1757,6 +1801,11 @@ namespace Sadie.Db.Migrations
                 column: "player_id");
 
             migrationBuilder.CreateIndex(
+                name: "ix_player_website_data_player_id",
+                table: "player_website_data",
+                column: "player_id");
+
+            migrationBuilder.CreateIndex(
                 name: "ix_roles_permissions_role_id",
                 table: "roles_permissions",
                 column: "role_id");
@@ -1846,6 +1895,9 @@ namespace Sadie.Db.Migrations
                 name: "navigator_categories");
 
             migrationBuilder.DropTable(
+                name: "oauth_clients");
+
+            migrationBuilder.DropTable(
                 name: "player_avatar_data");
 
             migrationBuilder.DropTable(
@@ -1916,6 +1968,9 @@ namespace Sadie.Db.Migrations
 
             migrationBuilder.DropTable(
                 name: "player_wardrobe_items");
+
+            migrationBuilder.DropTable(
+                name: "player_website_data");
 
             migrationBuilder.DropTable(
                 name: "roles_permissions");
