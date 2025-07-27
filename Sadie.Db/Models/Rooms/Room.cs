@@ -5,7 +5,7 @@ using Sadie.Db.Models.Rooms.Rights;
 
 namespace Sadie.Db.Models.Rooms;
 
-public class Room
+public class Room : IRoom
 {
     private Player? _owner;
     private RoomPaintSettings? _paintSettings;
