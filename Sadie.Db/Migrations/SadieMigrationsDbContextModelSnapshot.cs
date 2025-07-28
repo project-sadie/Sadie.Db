@@ -88,7 +88,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -96,7 +96,7 @@ namespace Sadie.Db.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("creator_id");
 
-                    b.Property<DateTime?>("ExpiresAt")
+                    b.Property<DateTimeOffset?>("ExpiresAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("expires_at");
 
@@ -320,7 +320,7 @@ namespace Sadie.Db.Migrations
 
             modelBuilder.Entity("Sadie.Db.Models.Constants.ServerPlayerConstants", b =>
                 {
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -341,7 +341,7 @@ namespace Sadie.Db.Migrations
 
             modelBuilder.Entity("Sadie.Db.Models.Constants.ServerRoomConstants", b =>
                 {
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -631,7 +631,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -707,7 +707,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -793,7 +793,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -910,7 +910,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -918,7 +918,7 @@ namespace Sadie.Db.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("creator_id");
 
-                    b.Property<DateTime?>("ExpiresAt")
+                    b.Property<DateTimeOffset?>("ExpiresAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("expires_at");
 
@@ -1036,7 +1036,7 @@ namespace Sadie.Db.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("is_online");
 
-                    b.Property<DateTime?>("LastOnline")
+                    b.Property<DateTimeOffset?>("LastOnline")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("last_online");
 
@@ -1083,7 +1083,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -1217,7 +1217,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -1389,7 +1389,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("ExpiresAt")
+                    b.Property<DateTimeOffset>("ExpiresAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("expires_at");
 
@@ -1511,11 +1511,11 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
-                    b.Property<DateTime>("ExpiresAt")
+                    b.Property<DateTimeOffset>("ExpiresAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("expires_at");
 
@@ -1527,7 +1527,7 @@ namespace Sadie.Db.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("token");
 
-                    b.Property<DateTime?>("UsedAt")
+                    b.Property<DateTimeOffset?>("UsedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("used_at");
 
@@ -1546,11 +1546,11 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
-                    b.Property<DateTime>("ExpiresAt")
+                    b.Property<DateTimeOffset>("ExpiresAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("expires_at");
 
@@ -1653,7 +1653,7 @@ namespace Sadie.Db.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("last_ip");
 
-                    b.Property<DateTime>("LastLogin")
+                    b.Property<DateTimeOffset>("LastLogin")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("last_login");
 
@@ -1703,7 +1703,7 @@ namespace Sadie.Db.Migrations
                         .HasColumnType("int")
                         .HasColumnName("chat_bubble_id");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -1778,7 +1778,7 @@ namespace Sadie.Db.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -2222,7 +2222,7 @@ namespace Sadie.Db.Migrations
                         .HasColumnType("int")
                         .HasColumnName("amount");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
@@ -2245,7 +2245,7 @@ namespace Sadie.Db.Migrations
 
             modelBuilder.Entity("Sadie.Db.Models.Server.ServerSettings", b =>
                 {
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("created_at");
 
