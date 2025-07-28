@@ -12,11 +12,11 @@ public class PlayerAvatarData
     public Player? Player { get; init; }
 
     [MaxLength(120)]
-    public required string FigureCode { get; init; }
+    public required string FigureCode { get; set; }
 
     [MaxLength(50)]
-    public string? Motto { get; init; }
+    public string? Motto { get; set; }
 
-    public PlayerAvatarGender Gender { get; init; }
-    public ChatBubble ChatBubbleId { get; init; }
+    public PlayerAvatarGender Gender { get; set; }
+    public ChatBubble ChatBubbleId { get; set; }
 }
