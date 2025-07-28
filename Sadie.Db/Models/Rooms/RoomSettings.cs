@@ -7,16 +7,16 @@ public class RoomSettings
     public int Id { get; init; }
     public int RoomId { get; init; }
     public bool WalkDiagonal { get; init; }
-    public RoomAccessType AccessType { get; init; }
-    public string? Password { get; init; } = ""; 
-    public int WhoCanMute { get; init; }
-    public int WhoCanKick { get; init; }
-    public int WhoCanBan { get; init; }
+    public RoomAccessType AccessType { get; set; }
+    public string? Password { get; set; } 
+    public int WhoCanMute { get; set; }
+    public int WhoCanKick { get; set; }
+    public int WhoCanBan { get; set; }
     public bool AllowPets { get; init; }
-    public bool CanPetsEat { get; init; }
+    public bool CanPetsEat { get; set; }
     public bool HideWalls { get; init; }
-    public int WallThickness { get; init; }
-    public int FloorThickness { get; init; }
-    public bool CanUsersOverlap { get; init; }
-    public RoomTradeOption TradeOption { get; init; }
+    public int WallThickness { get; set; }
+    public int FloorThickness { get; set; }
+    public bool CanUsersOverlap { get; set; }
+    public RoomTradeOption TradeOption { get; set; }
 }
