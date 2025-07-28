@@ -13,7 +13,7 @@ public class PlayerFurnitureItem
     public PlayerFurnitureItemPlacementData? PlacementData { get; set; }
 
     public required string LimitedData { get; init; }
-    public required string MetaData { get; init; }
+    public required string MetaData { get; set; }
 
     public DateTimeOffset CreatedAt { get; init; }
 }

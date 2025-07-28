@@ -12,9 +12,9 @@ public class RoomSettings
     public int WhoCanMute { get; set; }
     public int WhoCanKick { get; set; }
     public int WhoCanBan { get; set; }
-    public bool AllowPets { get; init; }
+    public bool AllowPets { get; set; }
     public bool CanPetsEat { get; set; }
-    public bool HideWalls { get; init; }
+    public bool HideWalls { get; set; }
     public int WallThickness { get; set; }
     public int FloorThickness { get; set; }
     public bool CanUsersOverlap { get; set; }
