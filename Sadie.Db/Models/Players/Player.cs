@@ -50,6 +50,7 @@ public class Player
     public ICollection<PlayerBot> Bots { get; init; } = [];
     public ICollection<PlayerRoomVisit> RoomVisits { get; init; } = [];
     public ICollection<PlayerBan> Bans { get; init; } = [];
+    public ICollection<PlayerSsoToken> Tokens { get; init; } = [];
     
     public int GetAcceptedFriendshipCount()
     {
