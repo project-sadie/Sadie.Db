@@ -73,10 +73,15 @@ public static class DatabaseServiceCollection
             return;
         }
 
-        dbContext.Entry(pages).Collection(p => p).Load();
-
         foreach (var page in pages.Where(page => page.Pages.Count > 0))
         {
+            dbContext.Entry(page).Collection(p => p.Pages).Load();
+
+            if (page.Pages.Count <= 0)
+            {
+                continue;
+            }
+            
             LoadPagesRecursively(dbContext, page.Pages);
         }
     }
