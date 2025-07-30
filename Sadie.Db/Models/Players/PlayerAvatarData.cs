@@ -11,7 +11,7 @@ public class PlayerAvatarData
 
     public Player? Player { get; init; }
 
-    [MaxLength(120)]
+    [MaxLength(200)]
     public required string FigureCode { get; set; }
 
     [MaxLength(50)]
