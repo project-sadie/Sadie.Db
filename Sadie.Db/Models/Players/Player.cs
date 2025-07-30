@@ -19,15 +19,15 @@ public class Player
     [MaxLength(60)] public required string Password { get; init; }
     public ICollection<Role> Roles { get; init; } = [];
     public DateTimeOffset CreatedAt { get; init; }
-    public PlayerData? Data { get; init; }
-    public PlayerAvatarData? AvatarData { get; init; }
+    public PlayerData? Data { get; set; }
+    public PlayerAvatarData? AvatarData { get; set; }
     public List<PlayerTag> Tags { get; init; } = [];
     public ICollection<PlayerRoomLike> RoomLikes { get; init; } = [];
     [InverseProperty("OriginPlayer")] public ICollection<PlayerRelationship> Relationships { get; init; } = [];
     
-    public PlayerNavigatorSettings? NavigatorSettings { get; init; }
+    public PlayerNavigatorSettings? NavigatorSettings { get; set; }
     
-    public PlayerGameSettings? GameSettings { get; init; }
+    public PlayerGameSettings? GameSettings { get; set; }
     
     public ICollection<PlayerBadge> Badges { get; init; } = [];
 
