@@ -838,8 +838,8 @@ namespace Sadie.Db.Migrations
 
                     b.Property<string>("FigureCode")
                         .IsRequired()
-                        .HasMaxLength(120)
-                        .HasColumnType("varchar(120)")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("figure_code");
 
                     b.Property<string>("Gender")
@@ -1533,6 +1533,9 @@ namespace Sadie.Db.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_player_sso_tokens");
+
+                    b.HasIndex("PlayerId")
+                        .HasDatabaseName("ix_player_sso_tokens_player_id");
 
                     b.ToTable("player_sso_tokens", (string)null);
                 });
@@ -2260,6 +2263,33 @@ namespace Sadie.Db.Migrations
                     b.ToTable("server_settings", (string)null);
                 });
 
+            modelBuilder.Entity("Sadie.Db.Models.ServerLocaleText", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)")
+                        .HasColumnName("key");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)")
+                        .HasColumnName("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_server_locale_texts");
+
+                    b.ToTable("server_locale_texts", (string)null);
+                });
+
             modelBuilder.Entity("Sadie.Db.Models.Subscription", b =>
                 {
                     b.Property<int>("Id")
@@ -2774,6 +2804,16 @@ namespace Sadie.Db.Migrations
                         .HasConstraintName("fk_player_saved_searches_players_player_id");
                 });
 
+            modelBuilder.Entity("Sadie.Db.Models.Players.PlayerSsoToken", b =>
+                {
+                    b.HasOne("Sadie.Db.Models.Players.Player", null)
+                        .WithMany("Tokens")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_player_sso_tokens_players_player_id");
+                });
+
             modelBuilder.Entity("Sadie.Db.Models.Players.PlayerSubscription", b =>
                 {
                     b.HasOne("Sadie.Db.Models.Players.Player", "Player")
@@ -3066,6 +3106,8 @@ namespace Sadie.Db.Migrations
                     b.Navigation("Subscriptions");
 
                     b.Navigation("Tags");
+
+                    b.Navigation("Tokens");
 
                     b.Navigation("WardrobeItems");
                 });
