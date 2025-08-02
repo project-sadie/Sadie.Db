@@ -66,6 +66,7 @@ public class SadieDbContext(DbContextOptions<SadieDbContext> options) : DbContex
     public DbSet<BannedIpAddress> BannedIpAddresses { get; init; }
     public DbSet<OauthClient> OauthClients { get; init; }
     public DbSet<PlayerWebsiteData> PlayerWebsiteData { get; init; }
+    public DbSet<ServerLocaleText> ServerLocaleTexts { get; init; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
