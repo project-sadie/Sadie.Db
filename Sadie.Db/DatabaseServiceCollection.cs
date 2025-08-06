@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Sadie.Db.Models.Catalog.FrontPage;
 using Sadie.Db.Models.Catalog.Pages;
 using Sadie.Db.Models.Constants;
@@ -15,15 +16,17 @@ public static class DatabaseServiceCollection
         
         serviceCollection.AddDbContext<SadieDbContext>(options =>
         {
-            options.UseMySql(config.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion, mySqlOptions =>
-            {
-                mySqlOptions.EnableRetryOnFailure(
-                    maxRetryCount: 10,
-                    maxRetryDelay: TimeSpan.FromSeconds(30),
-                    errorNumbersToAdd: null);
-                
-                mySqlOptions.MigrationsAssembly("Sadie.Db");
-            });
+            options.UseMySql(config.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion,
+                    mySqlOptions =>
+                    {
+                        mySqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(10),
+                            errorNumbersToAdd: null);
+
+                        mySqlOptions.MigrationsAssembly("Sadie.Db");
+                    })
+                .LogTo(Console.WriteLine, LogLevel.Error);
         
             options.UseSnakeCaseNamingConvention();
         }, ServiceLifetime.Transient);
